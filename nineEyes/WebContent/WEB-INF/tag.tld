@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee">
+	<description>all the taglib are in here except el function</description>
+	<display-name>taglib</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>tag</short-name>
+	<uri>/eyes</uri>
+	<!-- 整个工程路径 -->
+
+	<tag>
+		<name>bigIndex</name>
+		<tag-class>com.nineEyes.tag.BigIndex</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<name>MediaCategory</name>
+		<tag-class>com.nineEyes.tag.MediaCategoryAll</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>MediaPicType</name>
+		<tag-class>com.nineEyes.tag.MediaPicType</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>EventType</name>
+		<tag-class>com.nineEyes.tag.EventType</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+
+
+	<tag>
+		<name>NewsTop</name>
+		<tag-class>com.nineEyes.tag.NewsTop</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>PlayIndexTag</name>
+		<tag-class>com.nineEyes.tag.PlayIndexTag</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>IndexMoviePic</name>
+		<tag-class>com.nineEyes.tag.IndexMoviePic</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<name>DefaultNavigation</name>
+		<tag-class>com.nineEyes.tag.DefaultNavigation</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>顺序</description>
+			<name>defaultOrder</name>
+			<required>true</required>
+			<type>java.lang.Integer</type>
+		</attribute>
+	</tag>
+	<tag>
+		<name>NewsTypes</name>
+		<tag-class>com.nineEyes.tag.NewsTypes</tag-class>
+		<body-content>JSP</body-content>
+
+		<attribute>
+			<description>名字</description>
+			<name>name</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description>简单的包容了下ckeditor:defaultValue,defaultSettings,defaultEvent</description>
+		<name>myCK</name>
+		<tag-class>com.nineEyes.tag.CkeditorMine</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>defaultValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>	

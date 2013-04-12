@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+.tableBasic td {
+	height: 30px;
+}
+
+input[type="text"] {
+	height: 20px;
+}
+
+textarea {
+	font-size: 12px;
+}
+
+form[name='myForm'] input {
+	font-size: 12px;
+}
+
+.leftLayout {
+	margin-left: 30px;
+	margin-top:3px;
+	margin-bottom:3px;
+	border-bottom: 1px solid #cccccc;
+}
+
+.leftLayoutDesc {
+	margin-left: 10px;
+}

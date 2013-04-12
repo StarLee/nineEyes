@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+	<results>
+		<resultType name="dispatcher"
+			class="com.develop.actions.forward.DispatchResult"></resultType>
+		<resultType name="redirect"
+			class="com.develop.actions.forward.RedirectResult"></resultType>
+		<resultType name="json" class="com.develop.actions.forward.JSONResult"></resultType>
+		<resultType name="redirectAction" class="com.develop.actions.forward.ActionResult"></resultType>
+	</results>
+	<interceptors>
+		<!-- 这个是最基本的过滤器 -->
+		<interceptor class="com.cuc.actions.util.PreRequestInterceptor"></interceptor>
+		<!-- <interceptor class="com.develop.actions.action.PreRequestInterceptor"></interceptor> -->
+		<interceptor class="com.develop.actions.action.DefaultInterceptor"></interceptor>
+		<!--还可以添加其它的过滤器 -->
+	</interceptors>
+	<actions name="test" namespace="/">
+		<!-- 登陆动作 -->
+		<action class="com.cuc.actions.Logon" name="Logon">
+			<page type="redirectAction" name="user">
+				<param name="namespace">/</param>
+				<param name="actionName">MainPage?page=${url}</param>
+			</page>
+			<page type="dispatcher" name="fail">/Manager/logonFail.jsp</page>
+		</action>
+		<action class="com.cuc.actions.Logout" name="Logout">
+			<page type="redirect" name="ok">/</page>
+		</action>
+		<!-- 后台页面这个进行跳转 -->
+		<action class="com.cuc.actions.util.MainPage" name="MainPage">
+			<page type="dispatcher" name="page">/Manager/logon.jsp</page>
+		</action>
+		<!-- 首页 -->
+		<action class="com.cuc.actions.LogonIndex" name="Index">
+			<page type="dispatcher" name="ok">index.jsp</page>
+		</action>
+		<!-- 文件上传(大首页) -->
+		<action class="com.cuc.actions.UploadBigIndex" name="BigIndex">
+			<page type="json" name="ok">
+				<param name="name">json</param>
+			</page>
+		</action>
+
+		<!-- 生成大首页 -->
+		<action class="com.cuc.actions.SaveBigIndex" name="SaveBigIndex">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">MainPage?page=${url}</param>
+			</page>
+		</action>
+		<!-- 生成新闻 -->
+		<action class="com.cuc.actions.SaveNews" name="SaveNews">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">NewsIndex</param>
+			</page>
+		</action>
+		<!-- 新闻里的图片 -->
+		<action class="com.cuc.actions.UploadNewsPicture" name="NewsPic">
+			<page type="json" name="ok">
+				<param name="name">json</param>
+			</page>
+		</action>
+		<!-- 新闻目录 -->
+		<action class="com.cuc.actions.NewsIndex" name="NewsIndex">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		
+		<action class="com.cuc.actions.ShowNews" name="ShowNews">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		<action class="com.cuc.actions.ShowNewsForUpdate" name="ShowNewsForUpdate">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		
+		<action class="com.cuc.actions.UpdateNews" name="UpdateNews">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowNews?id=${id}</param>
+			</page>
+		</action>
+		
+		
+		<!-- 新闻链接 -->
+		<action class="com.cuc.actions.SaveLinkNews" name="SaveLinkNews">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">LinkNewsIndex</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.LinkNewsIndex" name="LinkNewsIndex">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		<action class="com.cuc.actions.SaveMediaCategory" name="SaveMediaCategory">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">MainPage?page=${url}</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.ShowMediaCategory" name="ShowMediaCategory">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		<action class="com.cuc.actions.UpdateMediaCategory" name="UpdateMediaCategory">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">MainPage?page=${url}</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.UploadMediaPicture" name="MediaPic">
+			<page type="json" name="ok">
+				<param name="name">json</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.SaveMedia" name="SaveMedia">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">MediaIndex</param>
+			</page>
+		</action>
+		<!-- 这是显示所有的视频列表 -->
+		<action class="com.cuc.actions.ShowMedia" name="MediaIndex">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+		<action class="com.cuc.actions.MediaPlay" name="MediaPlay">
+			<page type="dispatcher" name="ok">/customer/mediaPlay.jsp</page>
+		</action>
+		<!-- 保存事件 -->
+		<action class="com.cuc.actions.SaveEvent" name="SaveEvent">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">EventIndex</param>
+			</page>
+		</action>
+		<!-- 这是显示所有的事件列表 -->
+		<action class="com.cuc.actions.EventIndex" name="EventIndex">
+			<page type="dispatcher" name="ok">/Manager/logon.jsp</page>
+		</action>
+
+		<action class="com.cuc.actions.ShowMediaAjax" name="MediaIndexAjax">
+			<page type="json" name="ok">
+				<param name="name">json</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.ShowEvent" name="ShowEvent">
+			<page type="dispatcher" name="ok">
+				/Manager/logon.jsp
+			</page>
+		</action>
+		<action class="com.cuc.actions.ShowEventUpdate" name="ShowEventUpdate">
+			<page type="dispatcher" name="ok">
+				/Manager/logon.jsp
+			</page>
+		</action>
+		<action class="com.cuc.actions.ShowMediaForUpdate" name="ShowMediaForUpdate">
+			<page type="dispatcher" name="ok">
+				/Manager/logon.jsp
+			</page>
+		</action>
+		<action class="com.cuc.actions.UpdateEvent" name="UpdateEvent">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowEvent?id=${eventID}</param>
+			</page>
+		</action>
+
+		<action class="com.cuc.actions.UpdateMedia" name="UpdateMedia">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowMediaForUpdate?id=${id}</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.DeleteMediaPic" name="DeleteMediaPic">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowMediaForUpdate?id=${mediaID}</param>
+			</page>
+		</action>
+
+		<action class="com.cuc.actions.DeleteEventPic" name="DeleteEventPic">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowEvent?id=${eventID}</param>
+			</page>
+		</action>
+
+		<action class="com.cuc.actions.DeleteEventLinkNews" name="DeleteEventLinkNews">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowEvent?id=${eventID}</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.DeleteEventMedia" name="DeleteEventMedia">
+			<page type="redirectAction" name="ok">
+				<param name="namespace">/</param>
+				<param name="actionName">ShowEvent?id=${eventID}</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.UpdateMediaPicType" name="UpdateMediaPicType">
+			<page type="json" name="ok">
+				<param name="name">result</param>
+			</page>
+		</action>
+		<action class="com.cuc.actions.GetNewsTypesSort" name="GetNewsTypesSort">
+			<page type="json" name="ok">
+				<param name="name">jsonType</param>
+			</page>
+		</action>
+		<!-- 新加的首页 -->
+		<action class="com.cuc.actions.Index" name="Index">
+			<page type="dispatcher" name="ok">/WEB-INF/Index/index.html</page>
+		</action>
+	</actions>
+	<!-- 用户端 -->
+	<actions name="test" namespace="/customer">
+		<!-- 这个是与上面一样的 -->
+		<action class="com.cuc.actions.MediaPlay" name="MediaPlay">
+			<page type="dispatcher" name="ok">/customer/mediaPlay.jsp</page>
+		</action>
+		<action class="com.cuc.actions.Index" name="Index">
+			<page type="dispatcher" name="ok">/customer/indexNew.jsp</page>
+		</action>
+		<action class="com.cuc.actions.Index" name="Service">
+			<page type="dispatcher" name="ok">/customer/service_outline.jsp</page>
+		</action>
+		<!-- 服务页面 -->
+		<action class="com.cuc.actions.LoadOutline" name="LoadOutline">
+			<page type="json" name="ok">
+				<param name="name">jsonType</param>
+			</page>
+		</action>
+		<!-- 内容页 -->
+		<action class="com.cuc.actions.ShowNews_Customer" name="ShowNews">
+			<page type="dispatcher" name="ok">/customer/content.jsp</page>
+		</action>	
+		<action class="com.cuc.actions.ShowNews_Customer_Detail" name="ShowNewsConfirm">
+			<page type="dispatcher" name="ok">/customer/contentDisplay.jsp</page>
+		</action>	
+	</actions>
+
+</result>
